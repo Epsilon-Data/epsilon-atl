@@ -1,0 +1,23 @@
+bin/
+*.exe
+*.test
+*.out
+.env
+.idea/
+.vscode/
+.DS_Store
+
+# Build artifacts in root
+/atl
+/seed
+/bench
+/bench-compare
+/bench-scale
+
+# Keys (generated per-machine)
+keys/*.key
+keys/coordinators/
+
+# Benchmark results (machine-specific)
+results/
+.claude/
