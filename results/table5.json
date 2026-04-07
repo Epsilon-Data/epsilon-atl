@@ -1,0 +1,1911 @@
+{
+  "timestamp": "2026-04-07T17:14:35Z",
+  "n": 100,
+  "warmup": 10,
+  "payload_bytes": 2048,
+  "log_size_start": 0,
+  "log_size_end": 0,
+  "steps": {
+    "auth": {
+      "mean_us": 175.09,
+      "std_us": 93.42,
+      "p50_us": 139.5,
+      "p95_us": 375.75,
+      "p99_us": 500.960000000001,
+      "min_us": 116,
+      "max_us": 695
+    },
+    "db_insert": {
+      "mean_us": 2055.46,
+      "std_us": 929.72,
+      "p50_us": 1827.5,
+      "p95_us": 2603.199999999998,
+      "p99_us": 5373.240000000023,
+      "min_us": 1642,
+      "max_us": 9852
+    },
+    "dedup_check": {
+      "mean_us": 710.69,
+      "std_us": 567.52,
+      "p50_us": 560.5,
+      "p95_us": 1384.6499999999999,
+      "p99_us": 2808.940000000012,
+      "min_us": 469,
+      "max_us": 5179
+    },
+    "leaf_hash": {
+      "mean_us": 11.6,
+      "std_us": 6.6,
+      "p50_us": 9,
+      "p95_us": 16.049999999999997,
+      "p99_us": 51.02000000000001,
+      "min_us": 8,
+      "max_us": 53
+    },
+    "policy": {
+      "mean_us": 11.96,
+      "std_us": 12.65,
+      "p50_us": 9,
+      "p95_us": 23.049999999999997,
+      "p99_us": 93.04000000000002,
+      "min_us": 6,
+      "max_us": 97
+    },
+    "receipt_gen": {
+      "mean_us": 158.81,
+      "std_us": 154.56,
+      "p50_us": 124.5,
+      "p95_us": 274.74999999999994,
+      "p99_us": 733.880000000004,
+      "min_us": 107,
+      "max_us": 1514
+    },
+    "state_save": {
+      "mean_us": 1831.05,
+      "std_us": 557.15,
+      "p50_us": 1654,
+      "p95_us": 2700.299999999998,
+      "p99_us": 3667.830000000009,
+      "min_us": 1465,
+      "max_us": 5433
+    },
+    "sth_sign": {
+      "mean_us": 1786.11,
+      "std_us": 748.11,
+      "p50_us": 1624,
+      "p95_us": 2559.45,
+      "p99_us": 5435.170000000008,
+      "min_us": 1343,
+      "max_us": 7036
+    },
+    "total": {
+      "mean_us": 6779.74,
+      "std_us": 1814.48,
+      "p50_us": 6124,
+      "p95_us": 9936.85,
+      "p99_us": 15555.300000000007,
+      "min_us": 5400,
+      "max_us": 16971
+    },
+    "tree_append": {
+      "mean_us": 15.31,
+      "std_us": 65.91,
+      "p50_us": 7,
+      "p95_us": 19.099999999999994,
+      "p99_us": 160.95000000000255,
+      "min_us": 1,
+      "max_us": 651
+    }
+  },
+  "client_rtt": {
+    "mean_us": 7839.5,
+    "std_us": 2538.16,
+    "p50_us": 6842.5,
+    "p95_us": 12057.099999999999,
+    "p99_us": 20552.670000000002,
+    "min_us": 6168,
+    "max_us": 21015
+  },
+  "samples": [
+    {
+      "index": 0,
+      "leaf_index": 1544083,
+      "tree_size": 1544084,
+      "client_rtt_us": 6509,
+      "server_timing": {
+        "auth_us": 156,
+        "policy_us": 6,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 708,
+        "db_insert_us": 1781,
+        "tree_append_us": 21,
+        "sth_sign_us": 1438,
+        "state_save_us": 1484,
+        "receipt_gen_us": 108,
+        "total_us": 5730
+      }
+    },
+    {
+      "index": 1,
+      "leaf_index": 1544084,
+      "tree_size": 1544085,
+      "client_rtt_us": 6293,
+      "server_timing": {
+        "auth_us": 163,
+        "policy_us": 8,
+        "leaf_hash_us": 14,
+        "dedup_check_us": 522,
+        "db_insert_us": 1733,
+        "tree_append_us": 2,
+        "sth_sign_us": 1594,
+        "state_save_us": 1504,
+        "receipt_gen_us": 108,
+        "total_us": 5666
+      }
+    },
+    {
+      "index": 2,
+      "leaf_index": 1544085,
+      "tree_size": 1544086,
+      "client_rtt_us": 6925,
+      "server_timing": {
+        "auth_us": 141,
+        "policy_us": 7,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 655,
+        "db_insert_us": 2225,
+        "tree_append_us": 7,
+        "sth_sign_us": 1554,
+        "state_save_us": 1510,
+        "receipt_gen_us": 159,
+        "total_us": 6286
+      }
+    },
+    {
+      "index": 3,
+      "leaf_index": 1544086,
+      "tree_size": 1544087,
+      "client_rtt_us": 7363,
+      "server_timing": {
+        "auth_us": 133,
+        "policy_us": 8,
+        "leaf_hash_us": 10,
+        "dedup_check_us": 497,
+        "db_insert_us": 1774,
+        "tree_append_us": 2,
+        "sth_sign_us": 1509,
+        "state_save_us": 2621,
+        "receipt_gen_us": 107,
+        "total_us": 6704
+      }
+    },
+    {
+      "index": 4,
+      "leaf_index": 1544087,
+      "tree_size": 1544088,
+      "client_rtt_us": 6259,
+      "server_timing": {
+        "auth_us": 141,
+        "policy_us": 8,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 562,
+        "db_insert_us": 1804,
+        "tree_append_us": 12,
+        "sth_sign_us": 1467,
+        "state_save_us": 1471,
+        "receipt_gen_us": 138,
+        "total_us": 5633
+      }
+    },
+    {
+      "index": 5,
+      "leaf_index": 1544088,
+      "tree_size": 1544089,
+      "client_rtt_us": 6418,
+      "server_timing": {
+        "auth_us": 126,
+        "policy_us": 12,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 506,
+        "db_insert_us": 1867,
+        "tree_append_us": 2,
+        "sth_sign_us": 1450,
+        "state_save_us": 1535,
+        "receipt_gen_us": 119,
+        "total_us": 5652
+      }
+    },
+    {
+      "index": 6,
+      "leaf_index": 1544089,
+      "tree_size": 1544090,
+      "client_rtt_us": 6248,
+      "server_timing": {
+        "auth_us": 120,
+        "policy_us": 9,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 510,
+        "db_insert_us": 1663,
+        "tree_append_us": 19,
+        "sth_sign_us": 1380,
+        "state_save_us": 1597,
+        "receipt_gen_us": 315,
+        "total_us": 5638
+      }
+    },
+    {
+      "index": 7,
+      "leaf_index": 1544090,
+      "tree_size": 1544091,
+      "client_rtt_us": 6245,
+      "server_timing": {
+        "auth_us": 127,
+        "policy_us": 8,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 514,
+        "db_insert_us": 1691,
+        "tree_append_us": 2,
+        "sth_sign_us": 1451,
+        "state_save_us": 1659,
+        "receipt_gen_us": 117,
+        "total_us": 5600
+      }
+    },
+    {
+      "index": 8,
+      "leaf_index": 1544091,
+      "tree_size": 1544092,
+      "client_rtt_us": 6554,
+      "server_timing": {
+        "auth_us": 149,
+        "policy_us": 10,
+        "leaf_hash_us": 8,
+        "dedup_check_us": 506,
+        "db_insert_us": 2158,
+        "tree_append_us": 12,
+        "sth_sign_us": 1427,
+        "state_save_us": 1552,
+        "receipt_gen_us": 120,
+        "total_us": 5960
+      }
+    },
+    {
+      "index": 9,
+      "leaf_index": 1544092,
+      "tree_size": 1544093,
+      "client_rtt_us": 6183,
+      "server_timing": {
+        "auth_us": 148,
+        "policy_us": 8,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 519,
+        "db_insert_us": 1800,
+        "tree_append_us": 1,
+        "sth_sign_us": 1405,
+        "state_save_us": 1558,
+        "receipt_gen_us": 122,
+        "total_us": 5590
+      }
+    },
+    {
+      "index": 10,
+      "leaf_index": 1544093,
+      "tree_size": 1544094,
+      "client_rtt_us": 6334,
+      "server_timing": {
+        "auth_us": 133,
+        "policy_us": 9,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 514,
+        "db_insert_us": 1746,
+        "tree_append_us": 7,
+        "sth_sign_us": 1343,
+        "state_save_us": 1509,
+        "receipt_gen_us": 110,
+        "total_us": 5400
+      }
+    },
+    {
+      "index": 11,
+      "leaf_index": 1544094,
+      "tree_size": 1544095,
+      "client_rtt_us": 6536,
+      "server_timing": {
+        "auth_us": 137,
+        "policy_us": 10,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 546,
+        "db_insert_us": 1832,
+        "tree_append_us": 4,
+        "sth_sign_us": 1459,
+        "state_save_us": 1577,
+        "receipt_gen_us": 236,
+        "total_us": 5829
+      }
+    },
+    {
+      "index": 12,
+      "leaf_index": 1544095,
+      "tree_size": 1544096,
+      "client_rtt_us": 6368,
+      "server_timing": {
+        "auth_us": 122,
+        "policy_us": 11,
+        "leaf_hash_us": 11,
+        "dedup_check_us": 531,
+        "db_insert_us": 1824,
+        "tree_append_us": 32,
+        "sth_sign_us": 1531,
+        "state_save_us": 1495,
+        "receipt_gen_us": 112,
+        "total_us": 5688
+      }
+    },
+    {
+      "index": 13,
+      "leaf_index": 1544096,
+      "tree_size": 1544097,
+      "client_rtt_us": 6481,
+      "server_timing": {
+        "auth_us": 129,
+        "policy_us": 9,
+        "leaf_hash_us": 11,
+        "dedup_check_us": 530,
+        "db_insert_us": 1774,
+        "tree_append_us": 2,
+        "sth_sign_us": 1543,
+        "state_save_us": 1564,
+        "receipt_gen_us": 237,
+        "total_us": 5820
+      }
+    },
+    {
+      "index": 14,
+      "leaf_index": 1544097,
+      "tree_size": 1544098,
+      "client_rtt_us": 6315,
+      "server_timing": {
+        "auth_us": 150,
+        "policy_us": 6,
+        "leaf_hash_us": 10,
+        "dedup_check_us": 474,
+        "db_insert_us": 1829,
+        "tree_append_us": 8,
+        "sth_sign_us": 1466,
+        "state_save_us": 1554,
+        "receipt_gen_us": 114,
+        "total_us": 5627
+      }
+    },
+    {
+      "index": 15,
+      "leaf_index": 1544098,
+      "tree_size": 1544099,
+      "client_rtt_us": 6395,
+      "server_timing": {
+        "auth_us": 140,
+        "policy_us": 7,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 483,
+        "db_insert_us": 1705,
+        "tree_append_us": 2,
+        "sth_sign_us": 1441,
+        "state_save_us": 1682,
+        "receipt_gen_us": 108,
+        "total_us": 5596
+      }
+    },
+    {
+      "index": 16,
+      "leaf_index": 1544099,
+      "tree_size": 1544100,
+      "client_rtt_us": 6378,
+      "server_timing": {
+        "auth_us": 127,
+        "policy_us": 8,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 506,
+        "db_insert_us": 1816,
+        "tree_append_us": 11,
+        "sth_sign_us": 1405,
+        "state_save_us": 1648,
+        "receipt_gen_us": 202,
+        "total_us": 5758
+      }
+    },
+    {
+      "index": 17,
+      "leaf_index": 1544100,
+      "tree_size": 1544101,
+      "client_rtt_us": 6168,
+      "server_timing": {
+        "auth_us": 148,
+        "policy_us": 13,
+        "leaf_hash_us": 14,
+        "dedup_check_us": 500,
+        "db_insert_us": 1864,
+        "tree_append_us": 2,
+        "sth_sign_us": 1361,
+        "state_save_us": 1520,
+        "receipt_gen_us": 117,
+        "total_us": 5558
+      }
+    },
+    {
+      "index": 18,
+      "leaf_index": 1544101,
+      "tree_size": 1544102,
+      "client_rtt_us": 6546,
+      "server_timing": {
+        "auth_us": 139,
+        "policy_us": 8,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 505,
+        "db_insert_us": 1985,
+        "tree_append_us": 9,
+        "sth_sign_us": 1403,
+        "state_save_us": 1574,
+        "receipt_gen_us": 132,
+        "total_us": 5793
+      }
+    },
+    {
+      "index": 19,
+      "leaf_index": 1544102,
+      "tree_size": 1544103,
+      "client_rtt_us": 6529,
+      "server_timing": {
+        "auth_us": 130,
+        "policy_us": 7,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 618,
+        "db_insert_us": 1700,
+        "tree_append_us": 3,
+        "sth_sign_us": 1761,
+        "state_save_us": 1558,
+        "receipt_gen_us": 111,
+        "total_us": 5924
+      }
+    },
+    {
+      "index": 20,
+      "leaf_index": 1544103,
+      "tree_size": 1544104,
+      "client_rtt_us": 6937,
+      "server_timing": {
+        "auth_us": 130,
+        "policy_us": 16,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 523,
+        "db_insert_us": 1712,
+        "tree_append_us": 14,
+        "sth_sign_us": 1939,
+        "state_save_us": 1576,
+        "receipt_gen_us": 116,
+        "total_us": 6058
+      }
+    },
+    {
+      "index": 21,
+      "leaf_index": 1544104,
+      "tree_size": 1544105,
+      "client_rtt_us": 6302,
+      "server_timing": {
+        "auth_us": 144,
+        "policy_us": 7,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 471,
+        "db_insert_us": 1872,
+        "tree_append_us": 2,
+        "sth_sign_us": 1444,
+        "state_save_us": 1626,
+        "receipt_gen_us": 109,
+        "total_us": 5701
+      }
+    },
+    {
+      "index": 22,
+      "leaf_index": 1544105,
+      "tree_size": 1544106,
+      "client_rtt_us": 6254,
+      "server_timing": {
+        "auth_us": 128,
+        "policy_us": 7,
+        "leaf_hash_us": 8,
+        "dedup_check_us": 488,
+        "db_insert_us": 1642,
+        "tree_append_us": 7,
+        "sth_sign_us": 1443,
+        "state_save_us": 1675,
+        "receipt_gen_us": 138,
+        "total_us": 5553
+      }
+    },
+    {
+      "index": 23,
+      "leaf_index": 1544106,
+      "tree_size": 1544107,
+      "client_rtt_us": 6822,
+      "server_timing": {
+        "auth_us": 137,
+        "policy_us": 7,
+        "leaf_hash_us": 8,
+        "dedup_check_us": 677,
+        "db_insert_us": 1946,
+        "tree_append_us": 2,
+        "sth_sign_us": 1594,
+        "state_save_us": 1685,
+        "receipt_gen_us": 120,
+        "total_us": 6194
+      }
+    },
+    {
+      "index": 24,
+      "leaf_index": 1544107,
+      "tree_size": 1544108,
+      "client_rtt_us": 6354,
+      "server_timing": {
+        "auth_us": 130,
+        "policy_us": 23,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 559,
+        "db_insert_us": 1726,
+        "tree_append_us": 12,
+        "sth_sign_us": 1439,
+        "state_save_us": 1563,
+        "receipt_gen_us": 116,
+        "total_us": 5601
+      }
+    },
+    {
+      "index": 25,
+      "leaf_index": 1544108,
+      "tree_size": 1544109,
+      "client_rtt_us": 6360,
+      "server_timing": {
+        "auth_us": 177,
+        "policy_us": 13,
+        "leaf_hash_us": 12,
+        "dedup_check_us": 523,
+        "db_insert_us": 1761,
+        "tree_append_us": 2,
+        "sth_sign_us": 1560,
+        "state_save_us": 1580,
+        "receipt_gen_us": 117,
+        "total_us": 5764
+      }
+    },
+    {
+      "index": 26,
+      "leaf_index": 1544109,
+      "tree_size": 1544110,
+      "client_rtt_us": 6592,
+      "server_timing": {
+        "auth_us": 132,
+        "policy_us": 8,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 496,
+        "db_insert_us": 2076,
+        "tree_append_us": 9,
+        "sth_sign_us": 1449,
+        "state_save_us": 1642,
+        "receipt_gen_us": 114,
+        "total_us": 5952
+      }
+    },
+    {
+      "index": 27,
+      "leaf_index": 1544110,
+      "tree_size": 1544111,
+      "client_rtt_us": 6421,
+      "server_timing": {
+        "auth_us": 159,
+        "policy_us": 7,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 533,
+        "db_insert_us": 1826,
+        "tree_append_us": 3,
+        "sth_sign_us": 1487,
+        "state_save_us": 1596,
+        "receipt_gen_us": 119,
+        "total_us": 5759
+      }
+    },
+    {
+      "index": 28,
+      "leaf_index": 1544111,
+      "tree_size": 1544112,
+      "client_rtt_us": 9449,
+      "server_timing": {
+        "auth_us": 269,
+        "policy_us": 14,
+        "leaf_hash_us": 10,
+        "dedup_check_us": 921,
+        "db_insert_us": 1815,
+        "tree_append_us": 17,
+        "sth_sign_us": 1666,
+        "state_save_us": 1654,
+        "receipt_gen_us": 1514,
+        "total_us": 7900
+      }
+    },
+    {
+      "index": 29,
+      "leaf_index": 1544112,
+      "tree_size": 1544113,
+      "client_rtt_us": 7726,
+      "server_timing": {
+        "auth_us": 316,
+        "policy_us": 10,
+        "leaf_hash_us": 15,
+        "dedup_check_us": 592,
+        "db_insert_us": 2024,
+        "tree_append_us": 3,
+        "sth_sign_us": 1668,
+        "state_save_us": 2116,
+        "receipt_gen_us": 127,
+        "total_us": 7007
+      }
+    },
+    {
+      "index": 30,
+      "leaf_index": 1544113,
+      "tree_size": 1544114,
+      "client_rtt_us": 10154,
+      "server_timing": {
+        "auth_us": 281,
+        "policy_us": 11,
+        "leaf_hash_us": 51,
+        "dedup_check_us": 1382,
+        "db_insert_us": 4057,
+        "tree_append_us": 10,
+        "sth_sign_us": 1646,
+        "state_save_us": 1624,
+        "receipt_gen_us": 118,
+        "total_us": 9234
+      }
+    },
+    {
+      "index": 31,
+      "leaf_index": 1544114,
+      "tree_size": 1544115,
+      "client_rtt_us": 6449,
+      "server_timing": {
+        "auth_us": 174,
+        "policy_us": 11,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 625,
+        "db_insert_us": 1807,
+        "tree_append_us": 3,
+        "sth_sign_us": 1491,
+        "state_save_us": 1580,
+        "receipt_gen_us": 109,
+        "total_us": 5832
+      }
+    },
+    {
+      "index": 32,
+      "leaf_index": 1544115,
+      "tree_size": 1544116,
+      "client_rtt_us": 6297,
+      "server_timing": {
+        "auth_us": 135,
+        "policy_us": 7,
+        "leaf_hash_us": 10,
+        "dedup_check_us": 469,
+        "db_insert_us": 1901,
+        "tree_append_us": 10,
+        "sth_sign_us": 1508,
+        "state_save_us": 1465,
+        "receipt_gen_us": 137,
+        "total_us": 5658
+      }
+    },
+    {
+      "index": 33,
+      "leaf_index": 1544116,
+      "tree_size": 1544117,
+      "client_rtt_us": 6827,
+      "server_timing": {
+        "auth_us": 141,
+        "policy_us": 10,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 543,
+        "db_insert_us": 1839,
+        "tree_append_us": 2,
+        "sth_sign_us": 1454,
+        "state_save_us": 1921,
+        "receipt_gen_us": 124,
+        "total_us": 6063
+      }
+    },
+    {
+      "index": 34,
+      "leaf_index": 1544117,
+      "tree_size": 1544118,
+      "client_rtt_us": 6715,
+      "server_timing": {
+        "auth_us": 149,
+        "policy_us": 10,
+        "leaf_hash_us": 15,
+        "dedup_check_us": 587,
+        "db_insert_us": 1886,
+        "tree_append_us": 9,
+        "sth_sign_us": 1606,
+        "state_save_us": 1626,
+        "receipt_gen_us": 130,
+        "total_us": 6042
+      }
+    },
+    {
+      "index": 35,
+      "leaf_index": 1544118,
+      "tree_size": 1544119,
+      "client_rtt_us": 6287,
+      "server_timing": {
+        "auth_us": 139,
+        "policy_us": 11,
+        "leaf_hash_us": 10,
+        "dedup_check_us": 510,
+        "db_insert_us": 1888,
+        "tree_append_us": 2,
+        "sth_sign_us": 1472,
+        "state_save_us": 1510,
+        "receipt_gen_us": 127,
+        "total_us": 5689
+      }
+    },
+    {
+      "index": 36,
+      "leaf_index": 1544119,
+      "tree_size": 1544120,
+      "client_rtt_us": 6855,
+      "server_timing": {
+        "auth_us": 158,
+        "policy_us": 8,
+        "leaf_hash_us": 15,
+        "dedup_check_us": 531,
+        "db_insert_us": 1722,
+        "tree_append_us": 14,
+        "sth_sign_us": 1640,
+        "state_save_us": 1883,
+        "receipt_gen_us": 123,
+        "total_us": 6119
+      }
+    },
+    {
+      "index": 37,
+      "leaf_index": 1544120,
+      "tree_size": 1544121,
+      "client_rtt_us": 6435,
+      "server_timing": {
+        "auth_us": 137,
+        "policy_us": 8,
+        "leaf_hash_us": 10,
+        "dedup_check_us": 536,
+        "db_insert_us": 1869,
+        "tree_append_us": 2,
+        "sth_sign_us": 1561,
+        "state_save_us": 1505,
+        "receipt_gen_us": 113,
+        "total_us": 5759
+      }
+    },
+    {
+      "index": 38,
+      "leaf_index": 1544121,
+      "tree_size": 1544122,
+      "client_rtt_us": 8899,
+      "server_timing": {
+        "auth_us": 128,
+        "policy_us": 7,
+        "leaf_hash_us": 17,
+        "dedup_check_us": 536,
+        "db_insert_us": 1775,
+        "tree_append_us": 8,
+        "sth_sign_us": 1829,
+        "state_save_us": 3650,
+        "receipt_gen_us": 188,
+        "total_us": 8159
+      }
+    },
+    {
+      "index": 39,
+      "leaf_index": 1544122,
+      "tree_size": 1544123,
+      "client_rtt_us": 10720,
+      "server_timing": {
+        "auth_us": 138,
+        "policy_us": 24,
+        "leaf_hash_us": 10,
+        "dedup_check_us": 589,
+        "db_insert_us": 1940,
+        "tree_append_us": 3,
+        "sth_sign_us": 1794,
+        "state_save_us": 5433,
+        "receipt_gen_us": 117,
+        "total_us": 10067
+      }
+    },
+    {
+      "index": 40,
+      "leaf_index": 1544123,
+      "tree_size": 1544124,
+      "client_rtt_us": 6770,
+      "server_timing": {
+        "auth_us": 130,
+        "policy_us": 9,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 594,
+        "db_insert_us": 1808,
+        "tree_append_us": 13,
+        "sth_sign_us": 1668,
+        "state_save_us": 1602,
+        "receipt_gen_us": 116,
+        "total_us": 5968
+      }
+    },
+    {
+      "index": 41,
+      "leaf_index": 1544124,
+      "tree_size": 1544125,
+      "client_rtt_us": 20548,
+      "server_timing": {
+        "auth_us": 161,
+        "policy_us": 19,
+        "leaf_hash_us": 16,
+        "dedup_check_us": 860,
+        "db_insert_us": 1808,
+        "tree_append_us": 3,
+        "sth_sign_us": 1625,
+        "state_save_us": 1560,
+        "receipt_gen_us": 170,
+        "total_us": 6241
+      }
+    },
+    {
+      "index": 42,
+      "leaf_index": 1544125,
+      "tree_size": 1544126,
+      "client_rtt_us": 21015,
+      "server_timing": {
+        "auth_us": 695,
+        "policy_us": 93,
+        "leaf_hash_us": 53,
+        "dedup_check_us": 2406,
+        "db_insert_us": 9852,
+        "tree_append_us": 15,
+        "sth_sign_us": 1820,
+        "state_save_us": 1803,
+        "receipt_gen_us": 134,
+        "total_us": 16971
+      }
+    },
+    {
+      "index": 43,
+      "leaf_index": 1544126,
+      "tree_size": 1544127,
+      "client_rtt_us": 6265,
+      "server_timing": {
+        "auth_us": 138,
+        "policy_us": 9,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 571,
+        "db_insert_us": 1667,
+        "tree_append_us": 2,
+        "sth_sign_us": 1544,
+        "state_save_us": 1531,
+        "receipt_gen_us": 137,
+        "total_us": 5628
+      }
+    },
+    {
+      "index": 44,
+      "leaf_index": 1544127,
+      "tree_size": 1544128,
+      "client_rtt_us": 6595,
+      "server_timing": {
+        "auth_us": 169,
+        "policy_us": 27,
+        "leaf_hash_us": 14,
+        "dedup_check_us": 659,
+        "db_insert_us": 1794,
+        "tree_append_us": 15,
+        "sth_sign_us": 1458,
+        "state_save_us": 1607,
+        "receipt_gen_us": 121,
+        "total_us": 5882
+      }
+    },
+    {
+      "index": 45,
+      "leaf_index": 1544128,
+      "tree_size": 1544129,
+      "client_rtt_us": 7122,
+      "server_timing": {
+        "auth_us": 134,
+        "policy_us": 7,
+        "leaf_hash_us": 11,
+        "dedup_check_us": 558,
+        "db_insert_us": 1755,
+        "tree_append_us": 2,
+        "sth_sign_us": 1783,
+        "state_save_us": 1902,
+        "receipt_gen_us": 190,
+        "total_us": 6364
+      }
+    },
+    {
+      "index": 46,
+      "leaf_index": 1544129,
+      "tree_size": 1544130,
+      "client_rtt_us": 6721,
+      "server_timing": {
+        "auth_us": 135,
+        "policy_us": 7,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 513,
+        "db_insert_us": 1781,
+        "tree_append_us": 8,
+        "sth_sign_us": 1814,
+        "state_save_us": 1474,
+        "receipt_gen_us": 180,
+        "total_us": 5940
+      }
+    },
+    {
+      "index": 47,
+      "leaf_index": 1544130,
+      "tree_size": 1544131,
+      "client_rtt_us": 7288,
+      "server_timing": {
+        "auth_us": 192,
+        "policy_us": 7,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 579,
+        "db_insert_us": 1812,
+        "tree_append_us": 2,
+        "sth_sign_us": 1857,
+        "state_save_us": 1638,
+        "receipt_gen_us": 121,
+        "total_us": 6240
+      }
+    },
+    {
+      "index": 48,
+      "leaf_index": 1544131,
+      "tree_size": 1544132,
+      "client_rtt_us": 7177,
+      "server_timing": {
+        "auth_us": 137,
+        "policy_us": 9,
+        "leaf_hash_us": 10,
+        "dedup_check_us": 656,
+        "db_insert_us": 2174,
+        "tree_append_us": 11,
+        "sth_sign_us": 1520,
+        "state_save_us": 1851,
+        "receipt_gen_us": 160,
+        "total_us": 6547
+      }
+    },
+    {
+      "index": 49,
+      "leaf_index": 1544132,
+      "tree_size": 1544133,
+      "client_rtt_us": 6596,
+      "server_timing": {
+        "auth_us": 139,
+        "policy_us": 7,
+        "leaf_hash_us": 33,
+        "dedup_check_us": 541,
+        "db_insert_us": 1833,
+        "tree_append_us": 3,
+        "sth_sign_us": 1535,
+        "state_save_us": 1677,
+        "receipt_gen_us": 122,
+        "total_us": 5909
+      }
+    },
+    {
+      "index": 50,
+      "leaf_index": 1544133,
+      "tree_size": 1544134,
+      "client_rtt_us": 6597,
+      "server_timing": {
+        "auth_us": 132,
+        "policy_us": 11,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 572,
+        "db_insert_us": 1690,
+        "tree_append_us": 8,
+        "sth_sign_us": 1677,
+        "state_save_us": 1635,
+        "receipt_gen_us": 127,
+        "total_us": 5885
+      }
+    },
+    {
+      "index": 51,
+      "leaf_index": 1544134,
+      "tree_size": 1544135,
+      "client_rtt_us": 7330,
+      "server_timing": {
+        "auth_us": 151,
+        "policy_us": 12,
+        "leaf_hash_us": 14,
+        "dedup_check_us": 792,
+        "db_insert_us": 1819,
+        "tree_append_us": 2,
+        "sth_sign_us": 1544,
+        "state_save_us": 2040,
+        "receipt_gen_us": 230,
+        "total_us": 6622
+      }
+    },
+    {
+      "index": 52,
+      "leaf_index": 1544135,
+      "tree_size": 1544136,
+      "client_rtt_us": 7773,
+      "server_timing": {
+        "auth_us": 375,
+        "policy_us": 97,
+        "leaf_hash_us": 13,
+        "dedup_check_us": 935,
+        "db_insert_us": 1854,
+        "tree_append_us": 13,
+        "sth_sign_us": 1776,
+        "state_save_us": 1682,
+        "receipt_gen_us": 127,
+        "total_us": 6898
+      }
+    },
+    {
+      "index": 53,
+      "leaf_index": 1544136,
+      "tree_size": 1544137,
+      "client_rtt_us": 6657,
+      "server_timing": {
+        "auth_us": 136,
+        "policy_us": 8,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 527,
+        "db_insert_us": 2072,
+        "tree_append_us": 2,
+        "sth_sign_us": 1521,
+        "state_save_us": 1555,
+        "receipt_gen_us": 138,
+        "total_us": 5988
+      }
+    },
+    {
+      "index": 54,
+      "leaf_index": 1544137,
+      "tree_size": 1544138,
+      "client_rtt_us": 6454,
+      "server_timing": {
+        "auth_us": 130,
+        "policy_us": 10,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 494,
+        "db_insert_us": 1717,
+        "tree_append_us": 8,
+        "sth_sign_us": 1694,
+        "state_save_us": 1590,
+        "receipt_gen_us": 109,
+        "total_us": 5782
+      }
+    },
+    {
+      "index": 55,
+      "leaf_index": 1544138,
+      "tree_size": 1544139,
+      "client_rtt_us": 6824,
+      "server_timing": {
+        "auth_us": 230,
+        "policy_us": 11,
+        "leaf_hash_us": 15,
+        "dedup_check_us": 531,
+        "db_insert_us": 1725,
+        "tree_append_us": 3,
+        "sth_sign_us": 1894,
+        "state_save_us": 1593,
+        "receipt_gen_us": 115,
+        "total_us": 6139
+      }
+    },
+    {
+      "index": 56,
+      "leaf_index": 1544139,
+      "tree_size": 1544140,
+      "client_rtt_us": 7429,
+      "server_timing": {
+        "auth_us": 149,
+        "policy_us": 8,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 518,
+        "db_insert_us": 2446,
+        "tree_append_us": 10,
+        "sth_sign_us": 1606,
+        "state_save_us": 1790,
+        "receipt_gen_us": 116,
+        "total_us": 6673
+      }
+    },
+    {
+      "index": 57,
+      "leaf_index": 1544140,
+      "tree_size": 1544141,
+      "client_rtt_us": 6746,
+      "server_timing": {
+        "auth_us": 140,
+        "policy_us": 8,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 547,
+        "db_insert_us": 1989,
+        "tree_append_us": 2,
+        "sth_sign_us": 1530,
+        "state_save_us": 1542,
+        "receipt_gen_us": 341,
+        "total_us": 6130
+      }
+    },
+    {
+      "index": 58,
+      "leaf_index": 1544141,
+      "tree_size": 1544142,
+      "client_rtt_us": 8377,
+      "server_timing": {
+        "auth_us": 129,
+        "policy_us": 9,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 483,
+        "db_insert_us": 1792,
+        "tree_append_us": 8,
+        "sth_sign_us": 1480,
+        "state_save_us": 3534,
+        "receipt_gen_us": 215,
+        "total_us": 7679
+      }
+    },
+    {
+      "index": 59,
+      "leaf_index": 1544142,
+      "tree_size": 1544143,
+      "client_rtt_us": 7540,
+      "server_timing": {
+        "auth_us": 146,
+        "policy_us": 9,
+        "leaf_hash_us": 12,
+        "dedup_check_us": 1238,
+        "db_insert_us": 1755,
+        "tree_append_us": 3,
+        "sth_sign_us": 1671,
+        "state_save_us": 1783,
+        "receipt_gen_us": 133,
+        "total_us": 6771
+      }
+    },
+    {
+      "index": 60,
+      "leaf_index": 1544143,
+      "tree_size": 1544144,
+      "client_rtt_us": 10636,
+      "server_timing": {
+        "auth_us": 310,
+        "policy_us": 16,
+        "leaf_hash_us": 12,
+        "dedup_check_us": 657,
+        "db_insert_us": 2391,
+        "tree_append_us": 12,
+        "sth_sign_us": 1733,
+        "state_save_us": 1711,
+        "receipt_gen_us": 142,
+        "total_us": 7010
+      }
+    },
+    {
+      "index": 61,
+      "leaf_index": 1544144,
+      "tree_size": 1544145,
+      "client_rtt_us": 9312,
+      "server_timing": {
+        "auth_us": 130,
+        "policy_us": 8,
+        "leaf_hash_us": 10,
+        "dedup_check_us": 663,
+        "db_insert_us": 1727,
+        "tree_append_us": 2,
+        "sth_sign_us": 1681,
+        "state_save_us": 3551,
+        "receipt_gen_us": 112,
+        "total_us": 7911
+      }
+    },
+    {
+      "index": 62,
+      "leaf_index": 1544145,
+      "tree_size": 1544146,
+      "client_rtt_us": 7825,
+      "server_timing": {
+        "auth_us": 146,
+        "policy_us": 11,
+        "leaf_hash_us": 15,
+        "dedup_check_us": 600,
+        "db_insert_us": 2119,
+        "tree_append_us": 43,
+        "sth_sign_us": 2380,
+        "state_save_us": 1573,
+        "receipt_gen_us": 134,
+        "total_us": 7041
+      }
+    },
+    {
+      "index": 63,
+      "leaf_index": 1544146,
+      "tree_size": 1544147,
+      "client_rtt_us": 6448,
+      "server_timing": {
+        "auth_us": 170,
+        "policy_us": 10,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 540,
+        "db_insert_us": 1792,
+        "tree_append_us": 2,
+        "sth_sign_us": 1423,
+        "state_save_us": 1668,
+        "receipt_gen_us": 125,
+        "total_us": 5762
+      }
+    },
+    {
+      "index": 64,
+      "leaf_index": 1544147,
+      "tree_size": 1544148,
+      "client_rtt_us": 6447,
+      "server_timing": {
+        "auth_us": 145,
+        "policy_us": 8,
+        "leaf_hash_us": 14,
+        "dedup_check_us": 520,
+        "db_insert_us": 1927,
+        "tree_append_us": 10,
+        "sth_sign_us": 1424,
+        "state_save_us": 1531,
+        "receipt_gen_us": 134,
+        "total_us": 5734
+      }
+    },
+    {
+      "index": 65,
+      "leaf_index": 1544148,
+      "tree_size": 1544149,
+      "client_rtt_us": 9365,
+      "server_timing": {
+        "auth_us": 131,
+        "policy_us": 35,
+        "leaf_hash_us": 17,
+        "dedup_check_us": 500,
+        "db_insert_us": 2564,
+        "tree_append_us": 4,
+        "sth_sign_us": 1818,
+        "state_save_us": 1853,
+        "receipt_gen_us": 134,
+        "total_us": 7073
+      }
+    },
+    {
+      "index": 66,
+      "leaf_index": 1544149,
+      "tree_size": 1544150,
+      "client_rtt_us": 12357,
+      "server_timing": {
+        "auth_us": 474,
+        "policy_us": 15,
+        "leaf_hash_us": 12,
+        "dedup_check_us": 5179,
+        "db_insert_us": 1813,
+        "tree_append_us": 8,
+        "sth_sign_us": 1652,
+        "state_save_us": 2062,
+        "receipt_gen_us": 117,
+        "total_us": 11353
+      }
+    },
+    {
+      "index": 67,
+      "leaf_index": 1544150,
+      "tree_size": 1544151,
+      "client_rtt_us": 7071,
+      "server_timing": {
+        "auth_us": 136,
+        "policy_us": 10,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 729,
+        "db_insert_us": 1898,
+        "tree_append_us": 2,
+        "sth_sign_us": 1708,
+        "state_save_us": 1742,
+        "receipt_gen_us": 136,
+        "total_us": 6390
+      }
+    },
+    {
+      "index": 68,
+      "leaf_index": 1544151,
+      "tree_size": 1544152,
+      "client_rtt_us": 9677,
+      "server_timing": {
+        "auth_us": 138,
+        "policy_us": 10,
+        "leaf_hash_us": 10,
+        "dedup_check_us": 708,
+        "db_insert_us": 1777,
+        "tree_append_us": 14,
+        "sth_sign_us": 1771,
+        "state_save_us": 2663,
+        "receipt_gen_us": 131,
+        "total_us": 7247
+      }
+    },
+    {
+      "index": 69,
+      "leaf_index": 1544152,
+      "tree_size": 1544153,
+      "client_rtt_us": 12173,
+      "server_timing": {
+        "auth_us": 153,
+        "policy_us": 10,
+        "leaf_hash_us": 16,
+        "dedup_check_us": 882,
+        "db_insert_us": 3348,
+        "tree_append_us": 651,
+        "sth_sign_us": 4202,
+        "state_save_us": 2096,
+        "receipt_gen_us": 116,
+        "total_us": 11495
+      }
+    },
+    {
+      "index": 70,
+      "leaf_index": 1544153,
+      "tree_size": 1544154,
+      "client_rtt_us": 8280,
+      "server_timing": {
+        "auth_us": 139,
+        "policy_us": 11,
+        "leaf_hash_us": 11,
+        "dedup_check_us": 616,
+        "db_insert_us": 2067,
+        "tree_append_us": 11,
+        "sth_sign_us": 2345,
+        "state_save_us": 1710,
+        "receipt_gen_us": 274,
+        "total_us": 7209
+      }
+    },
+    {
+      "index": 71,
+      "leaf_index": 1544154,
+      "tree_size": 1544155,
+      "client_rtt_us": 8817,
+      "server_timing": {
+        "auth_us": 128,
+        "policy_us": 7,
+        "leaf_hash_us": 10,
+        "dedup_check_us": 570,
+        "db_insert_us": 3850,
+        "tree_append_us": 3,
+        "sth_sign_us": 1781,
+        "state_save_us": 1654,
+        "receipt_gen_us": 120,
+        "total_us": 8143
+      }
+    },
+    {
+      "index": 72,
+      "leaf_index": 1544155,
+      "tree_size": 1544156,
+      "client_rtt_us": 6628,
+      "server_timing": {
+        "auth_us": 158,
+        "policy_us": 8,
+        "leaf_hash_us": 15,
+        "dedup_check_us": 540,
+        "db_insert_us": 1774,
+        "tree_append_us": 17,
+        "sth_sign_us": 1730,
+        "state_save_us": 1613,
+        "receipt_gen_us": 128,
+        "total_us": 6004
+      }
+    },
+    {
+      "index": 73,
+      "leaf_index": 1544156,
+      "tree_size": 1544157,
+      "client_rtt_us": 6878,
+      "server_timing": {
+        "auth_us": 267,
+        "policy_us": 8,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 552,
+        "db_insert_us": 1894,
+        "tree_append_us": 2,
+        "sth_sign_us": 1558,
+        "state_save_us": 1696,
+        "receipt_gen_us": 126,
+        "total_us": 6129
+      }
+    },
+    {
+      "index": 74,
+      "leaf_index": 1544157,
+      "tree_size": 1544158,
+      "client_rtt_us": 6579,
+      "server_timing": {
+        "auth_us": 129,
+        "policy_us": 11,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 514,
+        "db_insert_us": 1872,
+        "tree_append_us": 12,
+        "sth_sign_us": 1490,
+        "state_save_us": 1737,
+        "receipt_gen_us": 115,
+        "total_us": 5910
+      }
+    },
+    {
+      "index": 75,
+      "leaf_index": 1544158,
+      "tree_size": 1544159,
+      "client_rtt_us": 7755,
+      "server_timing": {
+        "auth_us": 138,
+        "policy_us": 9,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 517,
+        "db_insert_us": 2149,
+        "tree_append_us": 2,
+        "sth_sign_us": 1795,
+        "state_save_us": 2335,
+        "receipt_gen_us": 128,
+        "total_us": 7103
+      }
+    },
+    {
+      "index": 76,
+      "leaf_index": 1544159,
+      "tree_size": 1544160,
+      "client_rtt_us": 8824,
+      "server_timing": {
+        "auth_us": 130,
+        "policy_us": 7,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 573,
+        "db_insert_us": 1745,
+        "tree_append_us": 16,
+        "sth_sign_us": 2555,
+        "state_save_us": 2208,
+        "receipt_gen_us": 726,
+        "total_us": 7992
+      }
+    },
+    {
+      "index": 77,
+      "leaf_index": 1544160,
+      "tree_size": 1544161,
+      "client_rtt_us": 7642,
+      "server_timing": {
+        "auth_us": 156,
+        "policy_us": 7,
+        "leaf_hash_us": 10,
+        "dedup_check_us": 617,
+        "db_insert_us": 1925,
+        "tree_append_us": 4,
+        "sth_sign_us": 1766,
+        "state_save_us": 1624,
+        "receipt_gen_us": 137,
+        "total_us": 6264
+      }
+    },
+    {
+      "index": 78,
+      "leaf_index": 1544161,
+      "tree_size": 1544162,
+      "client_rtt_us": 10231,
+      "server_timing": {
+        "auth_us": 467,
+        "policy_us": 9,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 1897,
+        "db_insert_us": 2483,
+        "tree_append_us": 8,
+        "sth_sign_us": 1693,
+        "state_save_us": 1581,
+        "receipt_gen_us": 117,
+        "total_us": 8288
+      }
+    },
+    {
+      "index": 79,
+      "leaf_index": 1544162,
+      "tree_size": 1544163,
+      "client_rtt_us": 6456,
+      "server_timing": {
+        "auth_us": 127,
+        "policy_us": 12,
+        "leaf_hash_us": 10,
+        "dedup_check_us": 517,
+        "db_insert_us": 1710,
+        "tree_append_us": 2,
+        "sth_sign_us": 1409,
+        "state_save_us": 1731,
+        "receipt_gen_us": 135,
+        "total_us": 5673
+      }
+    },
+    {
+      "index": 80,
+      "leaf_index": 1544163,
+      "tree_size": 1544164,
+      "client_rtt_us": 7022,
+      "server_timing": {
+        "auth_us": 145,
+        "policy_us": 6,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 629,
+        "db_insert_us": 1713,
+        "tree_append_us": 13,
+        "sth_sign_us": 1507,
+        "state_save_us": 2048,
+        "receipt_gen_us": 107,
+        "total_us": 6193
+      }
+    },
+    {
+      "index": 81,
+      "leaf_index": 1544164,
+      "tree_size": 1544165,
+      "client_rtt_us": 6487,
+      "server_timing": {
+        "auth_us": 135,
+        "policy_us": 10,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 542,
+        "db_insert_us": 1694,
+        "tree_append_us": 2,
+        "sth_sign_us": 1644,
+        "state_save_us": 1563,
+        "receipt_gen_us": 121,
+        "total_us": 5740
+      }
+    },
+    {
+      "index": 82,
+      "leaf_index": 1544165,
+      "tree_size": 1544166,
+      "client_rtt_us": 17471,
+      "server_timing": {
+        "auth_us": 191,
+        "policy_us": 18,
+        "leaf_hash_us": 15,
+        "dedup_check_us": 642,
+        "db_insert_us": 5328,
+        "tree_append_us": 11,
+        "sth_sign_us": 7036,
+        "state_save_us": 2126,
+        "receipt_gen_us": 149,
+        "total_us": 15541
+      }
+    },
+    {
+      "index": 83,
+      "leaf_index": 1544166,
+      "tree_size": 1544167,
+      "client_rtt_us": 7382,
+      "server_timing": {
+        "auth_us": 131,
+        "policy_us": 7,
+        "leaf_hash_us": 11,
+        "dedup_check_us": 604,
+        "db_insert_us": 2097,
+        "tree_append_us": 2,
+        "sth_sign_us": 1859,
+        "state_save_us": 1696,
+        "receipt_gen_us": 289,
+        "total_us": 6716
+      }
+    },
+    {
+      "index": 84,
+      "leaf_index": 1544167,
+      "tree_size": 1544168,
+      "client_rtt_us": 12051,
+      "server_timing": {
+        "auth_us": 131,
+        "policy_us": 11,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 576,
+        "db_insert_us": 1810,
+        "tree_append_us": 15,
+        "sth_sign_us": 5419,
+        "state_save_us": 1781,
+        "receipt_gen_us": 157,
+        "total_us": 9930
+      }
+    },
+    {
+      "index": 85,
+      "leaf_index": 1544168,
+      "tree_size": 1544169,
+      "client_rtt_us": 10432,
+      "server_timing": {
+        "auth_us": 148,
+        "policy_us": 10,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 862,
+        "db_insert_us": 1823,
+        "tree_append_us": 2,
+        "sth_sign_us": 1866,
+        "state_save_us": 3409,
+        "receipt_gen_us": 114,
+        "total_us": 8275
+      }
+    },
+    {
+      "index": 86,
+      "leaf_index": 1544169,
+      "tree_size": 1544170,
+      "client_rtt_us": 8929,
+      "server_timing": {
+        "auth_us": 499,
+        "policy_us": 11,
+        "leaf_hash_us": 11,
+        "dedup_check_us": 1435,
+        "db_insert_us": 2060,
+        "tree_append_us": 10,
+        "sth_sign_us": 1811,
+        "state_save_us": 1714,
+        "receipt_gen_us": 131,
+        "total_us": 7711
+      }
+    },
+    {
+      "index": 87,
+      "leaf_index": 1544170,
+      "tree_size": 1544171,
+      "client_rtt_us": 7965,
+      "server_timing": {
+        "auth_us": 135,
+        "policy_us": 8,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 700,
+        "db_insert_us": 1792,
+        "tree_append_us": 2,
+        "sth_sign_us": 1755,
+        "state_save_us": 1997,
+        "receipt_gen_us": 125,
+        "total_us": 6541
+      }
+    },
+    {
+      "index": 88,
+      "leaf_index": 1544171,
+      "tree_size": 1544172,
+      "client_rtt_us": 8799,
+      "server_timing": {
+        "auth_us": 139,
+        "policy_us": 10,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 595,
+        "db_insert_us": 2227,
+        "tree_append_us": 156,
+        "sth_sign_us": 2509,
+        "state_save_us": 2297,
+        "receipt_gen_us": 114,
+        "total_us": 8079
+      }
+    },
+    {
+      "index": 89,
+      "leaf_index": 1544172,
+      "tree_size": 1544173,
+      "client_rtt_us": 9443,
+      "server_timing": {
+        "auth_us": 133,
+        "policy_us": 12,
+        "leaf_hash_us": 10,
+        "dedup_check_us": 700,
+        "db_insert_us": 2292,
+        "tree_append_us": 3,
+        "sth_sign_us": 3138,
+        "state_save_us": 2061,
+        "receipt_gen_us": 118,
+        "total_us": 8487
+      }
+    },
+    {
+      "index": 90,
+      "leaf_index": 1544173,
+      "tree_size": 1544174,
+      "client_rtt_us": 8678,
+      "server_timing": {
+        "auth_us": 180,
+        "policy_us": 12,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 837,
+        "db_insert_us": 2088,
+        "tree_append_us": 8,
+        "sth_sign_us": 2644,
+        "state_save_us": 1727,
+        "receipt_gen_us": 111,
+        "total_us": 7653
+      }
+    },
+    {
+      "index": 91,
+      "leaf_index": 1544174,
+      "tree_size": 1544175,
+      "client_rtt_us": 7219,
+      "server_timing": {
+        "auth_us": 116,
+        "policy_us": 10,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 551,
+        "db_insert_us": 1942,
+        "tree_append_us": 3,
+        "sth_sign_us": 1869,
+        "state_save_us": 1884,
+        "receipt_gen_us": 149,
+        "total_us": 6551
+      }
+    },
+    {
+      "index": 92,
+      "leaf_index": 1544175,
+      "tree_size": 1544176,
+      "client_rtt_us": 6675,
+      "server_timing": {
+        "auth_us": 144,
+        "policy_us": 10,
+        "leaf_hash_us": 10,
+        "dedup_check_us": 565,
+        "db_insert_us": 1803,
+        "tree_append_us": 16,
+        "sth_sign_us": 1441,
+        "state_save_us": 1786,
+        "receipt_gen_us": 126,
+        "total_us": 5924
+      }
+    },
+    {
+      "index": 93,
+      "leaf_index": 1544176,
+      "tree_size": 1544177,
+      "client_rtt_us": 6830,
+      "server_timing": {
+        "auth_us": 133,
+        "policy_us": 13,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 575,
+        "db_insert_us": 1816,
+        "tree_append_us": 2,
+        "sth_sign_us": 1603,
+        "state_save_us": 1807,
+        "receipt_gen_us": 118,
+        "total_us": 6094
+      }
+    },
+    {
+      "index": 94,
+      "leaf_index": 1544177,
+      "tree_size": 1544178,
+      "client_rtt_us": 8115,
+      "server_timing": {
+        "auth_us": 390,
+        "policy_us": 9,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 815,
+        "db_insert_us": 1971,
+        "tree_append_us": 9,
+        "sth_sign_us": 1755,
+        "state_save_us": 1696,
+        "receipt_gen_us": 129,
+        "total_us": 6808
+      }
+    },
+    {
+      "index": 95,
+      "leaf_index": 1544178,
+      "tree_size": 1544179,
+      "client_rtt_us": 7861,
+      "server_timing": {
+        "auth_us": 374,
+        "policy_us": 8,
+        "leaf_hash_us": 10,
+        "dedup_check_us": 716,
+        "db_insert_us": 1878,
+        "tree_append_us": 3,
+        "sth_sign_us": 1935,
+        "state_save_us": 1622,
+        "receipt_gen_us": 199,
+        "total_us": 6768
+      }
+    },
+    {
+      "index": 96,
+      "leaf_index": 1544179,
+      "tree_size": 1544180,
+      "client_rtt_us": 7181,
+      "server_timing": {
+        "auth_us": 290,
+        "policy_us": 7,
+        "leaf_hash_us": 15,
+        "dedup_check_us": 540,
+        "db_insert_us": 1874,
+        "tree_append_us": 9,
+        "sth_sign_us": 1653,
+        "state_save_us": 1977,
+        "receipt_gen_us": 112,
+        "total_us": 6499
+      }
+    },
+    {
+      "index": 97,
+      "leaf_index": 1544180,
+      "tree_size": 1544181,
+      "client_rtt_us": 10075,
+      "server_timing": {
+        "auth_us": 210,
+        "policy_us": 16,
+        "leaf_hash_us": 9,
+        "dedup_check_us": 2785,
+        "db_insert_us": 2102,
+        "tree_append_us": 2,
+        "sth_sign_us": 1816,
+        "state_save_us": 1947,
+        "receipt_gen_us": 116,
+        "total_us": 9027
+      }
+    },
+    {
+      "index": 98,
+      "leaf_index": 1544181,
+      "tree_size": 1544182,
+      "client_rtt_us": 7457,
+      "server_timing": {
+        "auth_us": 134,
+        "policy_us": 7,
+        "leaf_hash_us": 10,
+        "dedup_check_us": 523,
+        "db_insert_us": 1762,
+        "tree_append_us": 9,
+        "sth_sign_us": 1623,
+        "state_save_us": 1650,
+        "receipt_gen_us": 119,
+        "total_us": 5855
+      }
+    },
+    {
+      "index": 99,
+      "leaf_index": 1544182,
+      "tree_size": 1544183,
+      "client_rtt_us": 6751,
+      "server_timing": {
+        "auth_us": 170,
+        "policy_us": 11,
+        "leaf_hash_us": 14,
+        "dedup_check_us": 615,
+        "db_insert_us": 1851,
+        "tree_append_us": 2,
+        "sth_sign_us": 1719,
+        "state_save_us": 1507,
+        "receipt_gen_us": 120,
+        "total_us": 6031
+      }
+    }
+  ]
+}
