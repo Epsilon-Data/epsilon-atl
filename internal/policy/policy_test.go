@@ -1,6 +1,8 @@
 package policy
 
 import (
+	"crypto/ed25519"
+	"crypto/rand"
 	"testing"
 
 	"github.com/Epsilon-Data/epsilon-atl/internal/entry"
@@ -161,16 +163,43 @@ func TestUnknownEntryType(t *testing.T) {
 	}
 }
 
-func TestValidCommitment(t *testing.T) {
-	p := newTestPolicy()
-	e := entry.CommitmentEntry{
+// newCommitmentTestPolicy builds a Policy with one registered coordinator key
+// and returns the policy plus the private key for signing test entries.
+func newCommitmentTestPolicy(t *testing.T) (*Policy, ed25519.PrivateKey, string) {
+	t.Helper()
+	pub, priv, err := ed25519.GenerateKey(rand.Reader)
+	if err != nil {
+		t.Fatalf("generating ed25519 key: %v", err)
+	}
+	submitterID := "coord-1"
+	p := New(Config{
+		AllowedPCR0:     []string{"abc123"},
+		FreshnessWindow: 86400,
+		CoordinatorKeys: map[string]ed25519.PublicKey{
+			submitterID: pub,
+		},
+	})
+	return p, priv, submitterID
+}
+
+// signedCommitment builds a CommitmentEntry with a valid coordinator signature
+// over (job_id || commitment_hash).
+func signedCommitment(jobID string, hash []byte, priv ed25519.PrivateKey, submitterID string) entry.CommitmentEntry {
+	signed := append([]byte(jobID), hash...)
+	sig := ed25519.Sign(priv, signed)
+	return entry.CommitmentEntry{
 		EntryType:      entry.EntryTypeCommitment,
-		JobID:          "job-c1",
-		CommitmentHash: make([]byte, 32),
-		CoordSignature: make([]byte, 64),
-		SubmitterID:    "coord-1",
+		JobID:          jobID,
+		CommitmentHash: hash,
+		CoordSignature: sig,
+		SubmitterID:    submitterID,
 		Timestamp:      1700000000,
 	}
+}
+
+func TestValidCommitment(t *testing.T) {
+	p, priv, submitter := newCommitmentTestPolicy(t)
+	e := signedCommitment("job-c1", make([]byte, 32), priv, submitter)
 	data, _ := entry.Marshal(e)
 	if err := p.Validate(entry.EntryTypeCommitment, data); err != nil {
 		t.Fatalf("valid Commitment rejected: %v", err)
@@ -178,18 +207,11 @@ func TestValidCommitment(t *testing.T) {
 }
 
 func TestCommitmentMissingOrInvalidFields(t *testing.T) {
-	p := newTestPolicy()
-	good := entry.CommitmentEntry{
-		EntryType:      entry.EntryTypeCommitment,
-		JobID:          "job-c1",
-		CommitmentHash: make([]byte, 32),
-		CoordSignature: make([]byte, 64),
-		SubmitterID:    "coord-1",
-		Timestamp:      1700000000,
-	}
+	p, priv, submitter := newCommitmentTestPolicy(t)
+	good := signedCommitment("job-c1", make([]byte, 32), priv, submitter)
 
 	tests := []struct {
-		name  string
+		name   string
 		mutate func(e *entry.CommitmentEntry)
 	}{
 		{"missing job_id", func(e *entry.CommitmentEntry) { e.JobID = "" }},
@@ -208,4 +230,60 @@ func TestCommitmentMissingOrInvalidFields(t *testing.T) {
 			}
 		})
 	}
+}
+
+func TestCommitmentSignatureVerification(t *testing.T) {
+	p, priv, submitter := newCommitmentTestPolicy(t)
+	jobID := "job-sig-1"
+	hash := make([]byte, 32)
+	for i := range hash {
+		hash[i] = byte(i)
+	}
+
+	t.Run("tampered job_id rejected", func(t *testing.T) {
+		e := signedCommitment(jobID, hash, priv, submitter)
+		e.JobID = "job-sig-2" // mutate after signing
+		data, _ := entry.Marshal(e)
+		if err := p.Validate(entry.EntryTypeCommitment, data); err == nil {
+			t.Fatal("expected rejection for tampered job_id")
+		}
+	})
+
+	t.Run("tampered commitment_hash rejected", func(t *testing.T) {
+		e := signedCommitment(jobID, hash, priv, submitter)
+		tampered := make([]byte, 32)
+		copy(tampered, hash)
+		tampered[0] ^= 0xFF
+		e.CommitmentHash = tampered
+		data, _ := entry.Marshal(e)
+		if err := p.Validate(entry.EntryTypeCommitment, data); err == nil {
+			t.Fatal("expected rejection for tampered commitment_hash")
+		}
+	})
+
+	t.Run("garbage signature rejected", func(t *testing.T) {
+		e := signedCommitment(jobID, hash, priv, submitter)
+		e.CoordSignature = make([]byte, ed25519.SignatureSize) // all-zero sig
+		data, _ := entry.Marshal(e)
+		if err := p.Validate(entry.EntryTypeCommitment, data); err == nil {
+			t.Fatal("expected rejection for garbage signature")
+		}
+	})
+
+	t.Run("unknown submitter rejected", func(t *testing.T) {
+		e := signedCommitment(jobID, hash, priv, "coord-unregistered")
+		data, _ := entry.Marshal(e)
+		if err := p.Validate(entry.EntryTypeCommitment, data); err == nil {
+			t.Fatal("expected rejection for unknown submitter")
+		}
+	})
+
+	t.Run("signature from different key rejected", func(t *testing.T) {
+		_, otherPriv, _ := ed25519.GenerateKey(rand.Reader)
+		e := signedCommitment(jobID, hash, otherPriv, submitter) // signed by wrong key, claims registered submitter
+		data, _ := entry.Marshal(e)
+		if err := p.Validate(entry.EntryTypeCommitment, data); err == nil {
+			t.Fatal("expected rejection for signature from wrong key")
+		}
+	})
 }
