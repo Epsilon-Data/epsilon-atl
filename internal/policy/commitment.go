@@ -1,6 +1,7 @@
 package policy
 
 import (
+	"crypto/ed25519"
 	"fmt"
 
 	"github.com/Epsilon-Data/epsilon-atl/internal/entry"
@@ -31,8 +32,18 @@ func (p *Policy) validateCommitment(entryCBOR []byte) error {
 		return fmt.Errorf("commitment entry missing submitter_id")
 	}
 
-	// Coordinator signature verification is handled at the API auth layer
-	// (parallel to LA entries). Policy only validates structure.
+	// Verify the in-entry coordinator signature so the entry is auditable
+	// offline from the log archive alone, without trusting the log operator's
+	// HTTP auth layer. Signed payload is (job_id || commitment_hash); pubkey
+	// is looked up by submitter_id in the configured coordinator key set.
+	pubkey, ok := p.coordinatorKeys[e.SubmitterID]
+	if !ok {
+		return fmt.Errorf("unknown submitter_id: %s", e.SubmitterID)
+	}
+	signed := append([]byte(e.JobID), e.CommitmentHash...)
+	if !ed25519.Verify(pubkey, signed, e.CoordSignature) {
+		return fmt.Errorf("invalid coordinator signature over (job_id || commitment_hash)")
+	}
 
 	return nil
 }
