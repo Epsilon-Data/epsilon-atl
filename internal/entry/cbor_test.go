@@ -114,6 +114,43 @@ func TestEntryTypePeek(t *testing.T) {
 	if typ != EntryTypeLA {
 		t.Fatalf("expected %d, got %d", EntryTypeLA, typ)
 	}
+
+	cm := CommitmentEntry{EntryType: EntryTypeCommitment, JobID: "j", SubmitterID: "s"}
+	data, _ = Marshal(cm)
+	typ, err = EntryType(data)
+	if err != nil {
+		t.Fatalf("peek: %v", err)
+	}
+	if typ != EntryTypeCommitment {
+		t.Fatalf("expected %d, got %d", EntryTypeCommitment, typ)
+	}
+}
+
+func TestCommitmentEntryRoundtrip(t *testing.T) {
+	orig := CommitmentEntry{
+		EntryType:      EntryTypeCommitment,
+		JobID:          "job-c01",
+		CommitmentHash: bytes.Repeat([]byte{0x00}, 32),
+		CoordSignature: bytes.Repeat([]byte{0xAA}, 64),
+		SubmitterID:    "coord-1",
+		Timestamp:      1700000000,
+	}
+	data, err := Marshal(orig)
+	if err != nil {
+		t.Fatalf("marshal: %v", err)
+	}
+	var decoded CommitmentEntry
+	if err := Unmarshal(data, &decoded); err != nil {
+		t.Fatalf("unmarshal: %v", err)
+	}
+	if decoded.EntryType != orig.EntryType || decoded.JobID != orig.JobID ||
+		decoded.SubmitterID != orig.SubmitterID || decoded.Timestamp != orig.Timestamp {
+		t.Fatalf("roundtrip mismatch: got %+v", decoded)
+	}
+	if !bytes.Equal(decoded.CommitmentHash, orig.CommitmentHash) ||
+		!bytes.Equal(decoded.CoordSignature, orig.CoordSignature) {
+		t.Fatalf("byte field mismatch")
+	}
 }
 
 // TestCrossLanguageVectors verifies Go output matches Python cbor2.dumps(..., canonical=True).
@@ -143,6 +180,30 @@ func TestCrossLanguageVectors(t *testing.T) {
 		Attestation: []byte{0xDE, 0xAD},
 		Nonce:       []byte{0xBE, 0xEF},
 		SubmitterID: "coord-1",
+	}
+	goBytes, err := Marshal(e)
+	if err != nil {
+		t.Fatalf("marshal: %v", err)
+	}
+
+	goHex := hex.EncodeToString(goBytes)
+	if goHex != expectedHex {
+		t.Fatalf("cross-language mismatch:\n  got:  %s\n  want: %s", goHex, expectedHex)
+	}
+}
+
+// TestCommitmentCrossLanguageVector verifies Go output matches Python cbor2 reference.
+// Verified with: python3 -c "import cbor2; print(cbor2.dumps({0:4, 1:'job-c01', 2:bytes(32), 3:bytes.fromhex('aa'*64), 4:'coord-1', 5:1700000000}, canonical=True).hex())"
+func TestCommitmentCrossLanguageVector(t *testing.T) {
+	expectedHex := "a6000401676a6f622d6330310258200000000000000000000000000000000000000000000000000000000000000000035840aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0467636f6f72642d31051a6553f100"
+
+	e := CommitmentEntry{
+		EntryType:      EntryTypeCommitment,
+		JobID:          "job-c01",
+		CommitmentHash: bytes.Repeat([]byte{0x00}, 32),
+		CoordSignature: bytes.Repeat([]byte{0xAA}, 64),
+		SubmitterID:    "coord-1",
+		Timestamp:      1700000000,
 	}
 	goBytes, err := Marshal(e)
 	if err != nil {

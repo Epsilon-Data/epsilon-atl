@@ -271,6 +271,11 @@ func extractMetadata(entryType int, data []byte) (jobID, teePlatform string) {
 		if entry.Unmarshal(data, &e) == nil {
 			return e.JobID, ""
 		}
+	case entry.EntryTypeCommitment:
+		var e entry.CommitmentEntry
+		if entry.Unmarshal(data, &e) == nil {
+			return e.JobID, ""
+		}
 	}
 	return "", ""
 }

@@ -160,3 +160,52 @@ func TestUnknownEntryType(t *testing.T) {
 		t.Fatal("expected rejection for unknown type")
 	}
 }
+
+func TestValidCommitment(t *testing.T) {
+	p := newTestPolicy()
+	e := entry.CommitmentEntry{
+		EntryType:      entry.EntryTypeCommitment,
+		JobID:          "job-c1",
+		CommitmentHash: make([]byte, 32),
+		CoordSignature: make([]byte, 64),
+		SubmitterID:    "coord-1",
+		Timestamp:      1700000000,
+	}
+	data, _ := entry.Marshal(e)
+	if err := p.Validate(entry.EntryTypeCommitment, data); err != nil {
+		t.Fatalf("valid Commitment rejected: %v", err)
+	}
+}
+
+func TestCommitmentMissingOrInvalidFields(t *testing.T) {
+	p := newTestPolicy()
+	good := entry.CommitmentEntry{
+		EntryType:      entry.EntryTypeCommitment,
+		JobID:          "job-c1",
+		CommitmentHash: make([]byte, 32),
+		CoordSignature: make([]byte, 64),
+		SubmitterID:    "coord-1",
+		Timestamp:      1700000000,
+	}
+
+	tests := []struct {
+		name  string
+		mutate func(e *entry.CommitmentEntry)
+	}{
+		{"missing job_id", func(e *entry.CommitmentEntry) { e.JobID = "" }},
+		{"hash too short", func(e *entry.CommitmentEntry) { e.CommitmentHash = make([]byte, 16) }},
+		{"hash too long", func(e *entry.CommitmentEntry) { e.CommitmentHash = make([]byte, 64) }},
+		{"missing signature", func(e *entry.CommitmentEntry) { e.CoordSignature = nil }},
+		{"missing submitter", func(e *entry.CommitmentEntry) { e.SubmitterID = "" }},
+	}
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			e := good
+			tc.mutate(&e)
+			data, _ := entry.Marshal(e)
+			if err := p.Validate(entry.EntryTypeCommitment, data); err == nil {
+				t.Fatalf("%s: expected rejection", tc.name)
+			}
+		})
+	}
+}
