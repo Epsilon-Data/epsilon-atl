@@ -74,6 +74,8 @@ func (p *Policy) Validate(entryType int, entryCBOR []byte) error {
 		return p.validateLA(entryCBOR)
 	case entry.EntryTypeConfig:
 		return p.validateConfig(entryCBOR)
+	case entry.EntryTypeCommitment:
+		return p.validateCommitment(entryCBOR)
 	default:
 		return fmt.Errorf("unknown entry type: %d", entryType)
 	}
