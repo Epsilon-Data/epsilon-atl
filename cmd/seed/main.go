@@ -3,6 +3,7 @@ package main
 import (
 	"crypto/ed25519"
 	"crypto/rand"
+	"crypto/sha256"
 	"flag"
 	"fmt"
 	"log"
@@ -15,7 +16,8 @@ import (
 )
 
 func main() {
-	count := flag.Int("count", 0, "Number of synthetic HA entries to bulk-seed (0 = use default sample data)")
+	count := flag.Int("count", 0, "Number of synthetic entries to bulk-seed (0 = use default sample data)")
+	entryType := flag.String("type", "ha", "Entry type to bulk-seed: ha | commitment | mixed (B1 realistic log)")
 	flag.Parse()
 
 	dbURL := os.Getenv("ATL_DATABASE_URL")
@@ -25,6 +27,14 @@ func main() {
 	keyPath := os.Getenv("ATL_OPERATOR_KEY_PATH")
 	if keyPath == "" {
 		keyPath = "/tmp/atl-test/operator.key"
+	}
+	// Coordinator key for signing Commitment entries (in-entry CoordSignature).
+	// Falls back to the operator key if unset; for benchmarks both being the
+	// same is fine since the server just verifies whichever key the
+	// submitter_id resolves to.
+	coordKeyPath := os.Getenv("ATL_COORDINATOR_KEY_PATH")
+	if coordKeyPath == "" {
+		coordKeyPath = keyPath
 	}
 
 	s, err := store.New(dbURL)
@@ -69,16 +79,18 @@ func main() {
 	}
 
 	if *count > 0 {
-		// Bulk seeding mode for benchmarks
-		fmt.Printf("Bulk seeding %d HA entries...\n", *count)
+		// Bulk seeding mode for benchmarks (B1 pre-population).
+		coordPrivKey, err := sth.LoadPrivateKey(coordKeyPath)
+		if err != nil {
+			log.Fatalf("load coord key: %v", err)
+		}
+		fmt.Printf("Bulk seeding %d entries (type=%s)...\n", *count, *entryType)
 		batchSize := 1000
-		for i := 0; i < *count; i++ {
-			jobID := fmt.Sprintf("BENCH-%08d", int(tree.Size())+1)
+		seedHA := func(jobID string) (int, error) {
 			nonce := make([]byte, 32)
 			rand.Read(nonce)
 			attestation := make([]byte, 64)
 			rand.Read(attestation)
-
 			data, _ := entry.Marshal(entry.HAEntry{
 				EntryType:   entry.EntryTypeHA,
 				JobID:       jobID,
@@ -90,11 +102,65 @@ func main() {
 			leafHash := merkle.HashLeaf(data)
 			idx, err := s.AppendEntry(entry.EntryTypeHA, data, leafHash, jobID, "aws-nitro", "coordinator-bench")
 			if err != nil {
+				return 0, err
+			}
+			tree.Append(leafHash)
+			return int(idx), nil
+		}
+		seedCommitment := func(jobID string) (int, error) {
+			// Realistic Commitment entry: SHA-256 of synthetic JAC payload,
+			// Ed25519-signed by the coordinator key (matches what the live
+			// path would produce so server-side validation exercises the
+			// same code path as production submissions).
+			jacPayload := make([]byte, 256)
+			rand.Read(jacPayload)
+			h := sha256.Sum256(jacPayload)
+			signed := append([]byte(jobID), h[:]...)
+			sig := ed25519.Sign(coordPrivKey, signed)
+			data, _ := entry.Marshal(entry.CommitmentEntry{
+				EntryType:      entry.EntryTypeCommitment,
+				JobID:          jobID,
+				CommitmentHash: h[:],
+				CoordSignature: sig,
+				SubmitterID:    "coordinator-bench",
+				Timestamp:      1700000000,
+			})
+			leafHash := merkle.HashLeaf(data)
+			idx, err := s.AppendEntry(entry.EntryTypeCommitment, data, leafHash, jobID, "", "coordinator-bench")
+			if err != nil {
+				return 0, err
+			}
+			tree.Append(leafHash)
+			return int(idx), nil
+		}
+
+		// Decide what to seed at each iteration based on --type.
+		// "mixed" alternates Commitment+HA pairs (matches commitment-then-
+		// dispatch live traffic where every job emits both entries).
+		for i := 0; i < *count; i++ {
+			jobID := fmt.Sprintf("BENCH-%08d", int(tree.Size())+1)
+			var idx int
+			var err error
+			switch *entryType {
+			case "ha":
+				idx, err = seedHA(jobID)
+			case "commitment":
+				idx, err = seedCommitment(jobID)
+			case "mixed":
+				// Even index → Commitment; odd → HA referencing same job_id
+				// pattern (paired-jobs model).
+				if i%2 == 0 {
+					idx, err = seedCommitment(jobID)
+				} else {
+					idx, err = seedHA(jobID)
+				}
+			default:
+				log.Fatalf("unknown --type %q (want: ha | commitment | mixed)", *entryType)
+			}
+			if err != nil {
 				log.Printf("  skip %s: %v", jobID, err)
 				continue
 			}
-			tree.Append(leafHash)
-
 			if (i+1)%batchSize == 0 || i == *count-1 {
 				fmt.Printf("  seeded %d/%d (latest: #%d %s)\n", i+1, *count, idx, jobID)
 			}
