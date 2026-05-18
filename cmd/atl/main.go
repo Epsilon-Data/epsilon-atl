@@ -98,11 +98,6 @@ func serveCmd() *cobra.Command {
 				return fmt.Errorf("creating receipt generator: %w", err)
 			}
 
-			// Create policy
-			pol := policy.New(policy.Config{
-				AllowedPCR0: cfg.AllowedPCR0,
-			})
-
 			// Load coordinator public keys from directory
 			// Each file: {submitter_id}.pub (PEM-encoded Ed25519 public key)
 			coordKeys := make(map[string]ed25519.PublicKey)
@@ -136,6 +131,13 @@ func serveCmd() *cobra.Command {
 					log.Printf("Loaded coordinator key: %s", submitterID)
 				}
 			}
+
+			// Create policy AFTER coordKeys is loaded so validateCommitment
+			// can verify the in-entry CoordSignature.
+			pol := policy.New(policy.Config{
+				AllowedPCR0:     cfg.AllowedPCR0,
+				CoordinatorKeys: coordKeys,
+			})
 
 			// Create server
 			srv := api.NewServer(api.ServerConfig{
