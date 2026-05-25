@@ -13,6 +13,7 @@ bin/
 /bench
 /bench-compare
 /bench-scale
+/bench-concurrency
 
 # Keys (generated per-machine)
 keys/*.key
